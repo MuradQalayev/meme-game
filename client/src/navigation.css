@@ -1,0 +1,31 @@
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes scaleUp {
+    from { transform: scale(0.5); }
+    to { transform: scale(1); }
+  }
+  
+  @keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+  }
+  
+  .fade-in {
+    animation: fadeIn 2s;
+  }
+  
+  .scale-up {
+    animation: scaleUp 2s;
+  }
+  
+  .slide-in {
+    animation: slideIn 2s;
+  }
+  
+  .combined-animation {
+    animation: fadeIn 2s, scaleUp 2s, slideIn 2s;
+  }
+  

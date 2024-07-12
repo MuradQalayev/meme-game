@@ -1,0 +1,26 @@
+.meme-text {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    color: #007bff; 
+    cursor: pointer;
+    transition: color 0.5s ease-in-out;
+  }
+  
+  .meme-text:hover {
+    color: #28a745;
+    animation: colorChange 1s infinite alternate;
+  }
+  
+  @keyframes colorChange {
+    0% {
+      color: #28a745;
+    }
+    50% {
+      color: #ffc107;
+    }
+    100% {
+      color: #dc3545;
+    }
+  }
+  

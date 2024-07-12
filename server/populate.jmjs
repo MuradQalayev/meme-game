@@ -1,0 +1,37 @@
+import db from "./db.mjs";
+const crypto = require('crypto');
+
+// Function to hash the password with a salt
+function hashPassword(password, salt) {
+    const hash = crypto.createHmac('sha256', salt);
+    hash.update(password);
+    return hash.digest('hex');
+}
+
+// Function to add a new user to the database
+function addUser(db, username, password) {
+    const salt = crypto.randomBytes(16).toString('hex');
+    const hashedPassword = hashPassword(password, salt);
+
+    const stmt = db.prepare("INSERT INTO users (username, password, salt) VALUES (?, ?, ?)");
+    stmt.run(username, hashedPassword, salt, function(err) {
+        if (err) {
+            return console.error(err.message);
+        }
+        console.log(`A row has been inserted with rowid ${this.lastID}`);
+    });
+    stmt.finalize();
+}
+
+// Add a new user
+const username = 'newuser';
+const password = 'password123';
+addUser(db, username, password);
+
+// Close the database connection
+db.close((err) => {
+    if (err) {
+        return console.error(err.message);
+    }
+    console.log('Close the database connection.');
+});

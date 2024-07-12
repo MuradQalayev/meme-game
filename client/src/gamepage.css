@@ -1,0 +1,13 @@
+/* gamepage.css */
+.centered-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+}
+
+.large-spinner .spinner-border {
+  width: 3rem; 
+  height: 3rem; 
+}
+
